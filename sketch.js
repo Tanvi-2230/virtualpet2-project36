@@ -58,6 +58,8 @@ function draw() {
     text("Last Fed: 12AM", 350, 30);
   }else {
     text("Last Fed:" + lastFed + "AM", 350, 30);
+
+    
 }
   
 drawSprites();
@@ -91,8 +93,8 @@ function readStock(data){
 
 function feedDog(){
   dog.addImage(happyDogImg);
-
-  foodObj.updateFoodStock(foodObj.getFoodStock()-1);
+  foodObj.deductFood()
+  foodObj.updateFoodStock(foodObj.getFoodStock());
   database.ref('/').update({
     Food:foodObj.getFoodStock(),
     FeedTime:hour()
